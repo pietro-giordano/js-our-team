@@ -45,20 +45,39 @@ const team = [
       }
 ];
 
-for(let key in team) {
+for (let i = 0; i < team.length; i++) {
 
-      console.log(team[key]);
+      for (key in team[i]) {
+
+            console.log(team[i][key]);
+
+      }
 
 }
 
-for (let key in team) {
+for (let i = 0; i < team.length; i++) {
 
       const member = document.createElement('div');
-      member.innerHTML = team[key].name + ', ' + team[key].role;
+      member.classList.add('card');
       document.querySelector('main').append(member);
 
       const photo = document.createElement('img');
-      photo.src = team[key].photo;
-      document.querySelector('main').append(photo);
+      photo.src = "../img/" + `${team[i].photo}`;
+      member.append(photo);
+      photo.classList.add('card-img-top');
+
+      const body = document.createElement('div');
+      body.classList.add('card-body');
+      member.append(body);
+
+      const name = document.createElement('h5');
+      name.classList.add('card-title');
+      name.innerHTML = team[i].name;
+      body.append(name);
+
+      const role = document.createElement('p');
+      role.classList.add('card-text');
+      role.innerHTML = team[i].role;
+      body.append(role);
 
 }
